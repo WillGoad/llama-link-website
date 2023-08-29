@@ -14,19 +14,14 @@ export function PageComponent(props: {
   }
   query: string
 }) {
-  const { data } = useTina(props)
 
   return (
     <>
       <SiteHeader />
-     {data.page  && console.log(data.page.blocks)}
-      {data.page.blocks?.map((block, i) => {
+      {props.data.page.blocks?.map((block, i) => {
         switch (block?.__typename) {
-          case undefined: {
-            return <WelcomeHero key={i} {...block} />
-          }
-          default: {
-            return <WelcomeHero key={i} {...block} />
+          case "PageBlocksWelcomeHero": {
+            return <WelcomeHero  />
           }
         }
       })}
